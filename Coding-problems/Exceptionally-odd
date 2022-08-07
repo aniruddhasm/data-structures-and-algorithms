@@ -13,8 +13,8 @@ Solution:
 
 
 
-const a = [5, 7, 2, 7, 5, 2, 5];
-const len = 7;
+const a = [468,335,501,170,725,479,359,963,465,706,146,282,828,962,492,996,943,828,437,392,605,943,468,335,501,170,725,479,359,963,465,706,146,282,828,962,492,996,943,828,437,392,605];
+const len = 43;
 
 
 function getOddOccurrence(a, len){
@@ -24,11 +24,14 @@ function getOddOccurrence(a, len){
   for(let i=0; i<len;i++){
     if(obj[a[i]]){
       obj[a[i]] += 1;
-      if(obj[a[i]]%2 !== 0){
-        return `${a[i]} is repeated ${obj[a[i]]}`
-      }
     } else {
       obj[a[i]] = 1;
+    }
+  }
+  
+  for(const key in obj){
+  	if(obj[key]%2 !== 0){
+        return key
     }
   }
 }
