@@ -1,0 +1,19 @@
+function fib(n){
+	if(n <=2) return 1;
+  return fib(n-1, memo) + fib(n-2, memo);
+}
+
+console.log(fib(40))
+
+
+
+// Dynamic programming with memoization.
+
+function fib(n, memo){
+	if(memo[n] !== undefined) return memo[n];
+	if(n <=2) return 1;
+  let res = fib(n-1, memo) + fib(n-2, memo);
+  return res;
+}
+
+console.log(fib(40, []))
