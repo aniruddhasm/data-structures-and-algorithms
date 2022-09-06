@@ -16,3 +16,17 @@ function fib(n, memo = []){
 	return res;
 }
 console.log(fib(40))
+
+
+
+//iterative tabulation bottom up approach
+function fib(n){
+	if(n <= 2) return 1;
+  	let numsArr = [0, 1, 1];
+  	for(let i=3; i<=n; i++){
+  		numsArr[i] = numsArr[i-1] + numsArr[i-2];
+  	}
+  	return numsArr[n];
+}
+
+console.log(fib(40))
