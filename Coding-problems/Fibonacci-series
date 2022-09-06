@@ -1,19 +1,18 @@
 function fib(n){
-	if(n <=2) return 1;
-  return fib(n-1, memo) + fib(n-2, memo);
+	if(n <= 2) return 1;
+  	return fib(n-1) + fib(n-2);
 }
-
 console.log(fib(40))
 
 
 
 // Dynamic programming with memoization.
 
-function fib(n, memo){
+function fib(n, memo = []){
 	if(memo[n] !== undefined) return memo[n];
-	if(n <=2) return 1;
-  let res = fib(n-1, memo) + fib(n-2, memo);
-  return res;
+	if(n <= 2) return 1;
+  	let res = fib(n-1, memo) + fib(n-2, memo);
+	memo[n] = res;
+	return res;
 }
-
-console.log(fib(40, []))
+console.log(fib(40))
