@@ -16,4 +16,12 @@ function fastPower(a, b, n = 1000000007) {
   return res;
 }
 
-console.log(fastPower(2,5))
+function useRecursion(a,b){
+  if(b == 0){
+  	return 1;
+  }
+  return useRecursion(a,b-1) * a;
+}
+
+console.log(fastPower(2,5)) // O (logn)
+console.log(useRecursion(2,5)) // O (n)
