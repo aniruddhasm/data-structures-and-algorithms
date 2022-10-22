@@ -148,9 +148,20 @@ class SinglyLinkedList{
         }
         return data;
     }
+
+    middleElement(){
+        let i = this.head;
+        let j = this.head; 
+        while(j !== null && j.next !== null){
+            i = i.next;
+            j = j.next.next;
+        }
+        return i.val;
+    }
 }
 
 list = new SinglyLinkedList();
+list.push(1);
 list.push(2);
 list.push(3);
 list.push(4);
@@ -158,12 +169,13 @@ list.push(5);
 // console.log(list)
 // console.log(list.pop());
 // console.log(list.shift());
-list.unshift(0);
-list.get(1);
-list.set(10, 0);
-list.insert(1, 1);
+//list.unshift(0);
+//list.get(1);
+//list.set(10, 0);
+//list.insert(1, 1);
 //list.remove(1);
 console.log(list);
 console.log(list.print());
-list.reverse();
-console.log(list.print());
+console.log(list.middleElement());
+//list.reverse();
+//console.log(list.print());
