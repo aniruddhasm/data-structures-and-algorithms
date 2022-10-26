@@ -90,6 +90,32 @@ class BinarySearchTree {
         }
         return data;
     }
+
+    heightUsingRecursion(root){
+        if(root == null) return 0;
+        return Math.max(this.heightUsingRecursion(root.left), this.heightUsingRecursion(root.right)) + 1;
+    }
+
+    heightUsingQueue(){
+        let queue = [];
+        let node = this.root;
+        let depth = 0
+        queue.push(node);
+        queue.push(null)
+        while(queue.length){
+            node = queue.shift();
+            if(node == null){
+               depth += 1;
+            }
+            if(node != null){                
+                if(node.left) queue.push(node.left);
+                if(node.right) queue.push(node.right); 
+            } else if(queue.length>0) {
+                queue.push(null)
+            }
+        }
+        return depth;
+    }
 }
 
 let bst = new BinarySearchTree();
@@ -102,3 +128,5 @@ bst.insert(16);
 bst.insert(7);
 console.log(bst)
 console.log(bst.BFS())
+console.log(bst.heightUsingRecursion(bst.root));
+console.log(bst.heightUsingQueue(bst.root));
