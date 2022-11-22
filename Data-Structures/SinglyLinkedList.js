@@ -158,6 +158,29 @@ class SinglyLinkedList{
         }
         return i.val;
     }
+
+    detectCycle(){
+        let i=this.head;
+        let j=this.head;
+        while(j !== null && j.next !== null){
+            i = i.next;
+            j = j.next.next;
+            if(i === j){
+                return i;
+            }
+        }
+        return false;
+    }
+
+    detectCycleNode(){
+        let meet = this.detectCycle();
+        let current = this.head;
+        while(current.val !== meet.val){
+            current = current.next;
+            meet = meet.next;
+        }
+        return current;
+    }
 }
 
 list = new SinglyLinkedList();
