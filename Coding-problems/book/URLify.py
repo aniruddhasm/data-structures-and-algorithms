@@ -27,5 +27,5 @@ def urlify(url: List[str], trueLength: int) -> bool:
 
 
 
-url = "www.google.com/test urlify code"
+url = "h ello"
 print(urlify(list(url),len(url)))
