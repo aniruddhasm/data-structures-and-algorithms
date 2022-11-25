@@ -1,2 +1,2 @@
-# js-ds-algo
+# DSA
 Data Structures and Algorithms
