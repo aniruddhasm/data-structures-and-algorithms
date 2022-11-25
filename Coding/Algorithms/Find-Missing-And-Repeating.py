@@ -20,7 +20,7 @@ Explanation: Repeating number is 3 and
 smallest positive missing number is 2.
 
 Your Task:
-You don't need to read input or print anything. Your task is to complete the function findTwoElement() which takes the array of integers arr and n as parameters and returns an array of integers of size 2 denoting the answer ( The first index contains B and second index contains A.)
+You dont need to read input or print anything. Your task is to complete the function findTwoElement() which takes the array of integers arr and n as parameters and returns an array of integers of size 2 denoting the answer ( The first index contains B and second index contains A.)
 
 Expected Time Complexity: O(N)
 Expected Auxiliary Space: O(1)
