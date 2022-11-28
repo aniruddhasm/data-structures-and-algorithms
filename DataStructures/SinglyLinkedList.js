@@ -181,6 +181,19 @@ class SinglyLinkedList{
         }
         return current;
     }
+
+    // remove duplictes from sorted Linked List
+    removeDuplicates(){
+        let current = this.head;
+        while(current.next){
+            if(current.data === current.next.data){
+                current.next = current.next.next;
+            } else {
+                current=current.next;
+            }
+        }
+        return this.head;
+    }
 }
 
 list = new SinglyLinkedList();
