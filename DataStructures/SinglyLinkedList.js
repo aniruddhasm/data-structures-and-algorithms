@@ -194,6 +194,69 @@ class SinglyLinkedList{
         }
         return this.head;
     }
+
+    //Nth node from end of linked list
+    getNthFromLast(n){
+        let i = 1;
+        let current = this.head;
+        while(current.next){
+            current = current.next;
+            i++;
+        }
+        if(i < n) {
+            return -1;
+        } else {
+           let el = this.get(head, i-n)
+           return el.data;
+        }
+    }
+
+    //Remove duplicates from an unsorted linked list
+    removeDuplicates(){
+        let current = this.head;
+        let hashMap = {}
+        while(current.next){
+            hashMap[current.data] = 1;
+            if(current.next && hashMap[current.next.data]){
+                current.next = current.next.next;
+            } else {
+                current = current.next;
+            }
+        }
+        return this.head;
+    }
+
+    //Find length of Loop
+    countNodesinLoop(){
+       let meet = this.detectCycle(this.head)
+       if(meet === null) return 0;
+       let current = meet;
+       let count = 1;
+       while(current.next != meet){
+           count++;
+           current = current.next;
+       }
+       return count;
+    }
+
+    //Delete Middle of Linked List
+    deleteMiddle(node){
+        let i = 1;
+        let current = this.head;
+        while(current.next){
+            current = current.next;
+            i++;
+        }
+        
+        let mid = Math.floor(i/2);
+        if(i%2 !== 0 ){
+            mid + 1          
+        }
+        let prevNode = this.get(mid-1, this.head);
+        let removed = prevNode.next;
+        prevNode.next = removed.next;
+        return node;
+    }
 }
 
 list = new SinglyLinkedList();
