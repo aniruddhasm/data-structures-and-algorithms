@@ -1,5 +1,5 @@
-# JavaScript Algorithms and Data Structures
-This repository contains JavaScript based examples of algorithms and data structures.
+# JavaScript Data Structures and Algorithms
+This repository contains JavaScript based examples of data structures and algorithms.
 
 ## Data Structures
 * [Singly Linked List](DataStructures/SinglyLinkedList.js)
@@ -15,12 +15,12 @@ This repository contains JavaScript based examples of algorithms and data struct
 
 ## Alogorithms
 * **Sorting**
-  * [Bubble Sort](Sorting/BubbleSort.js)
-  * [Selection Sort](Sorting/SelectionSort.js)
-  * [Insertion Sort](Sorting/InsertionSort.js)
-  * [Merge Sort](Sorting/MergeSort.js)
-  * [Quicksort](Sorting/QuickSort.js)
-  * [Radix Sort](Sorting/Radix.js)
+  * [Bubble Sort](Algorithms/Sorting/BubbleSort.js)
+  * [Selection Sort](Algorithms/Sorting/SelectionSort.js)
+  * [Insertion Sort](Algorithms/Sorting/InsertionSort.js)
+  * [Merge Sort](Algorithms/Sorting/MergeSort.js)
+  * [Quicksort](Algorithms/Sorting/QuickSort.js)
+  * [Radix Sort](Algorithms/Sorting/Radix.js)
 
 
 ## Big O Notation

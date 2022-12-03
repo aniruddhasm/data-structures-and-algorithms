@@ -1,6 +1,5 @@
 const nums = [8,9,1,2,3,4,5,7,6];
 
-
 function insertionSort(arr){
 	const length = arr.length;
 	let currentVal = 0;
