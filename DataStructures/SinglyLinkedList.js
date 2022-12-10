@@ -257,6 +257,34 @@ class SinglyLinkedList{
         prevNode.next = removed.next;
         return node;
     }
+
+    //Remove loop
+    removeLoop(){
+        let slow = this.head;
+        let fast = this.head;
+        let prev;
+        while(fast != null && fast.next != null){
+            prev = slow;
+            slow = slow.next;
+            fast = fast.next.next;
+            if(slow == fast){
+                break;
+            }
+        }
+        
+        if(fast == null || fast.next == null) {
+            return;
+        }
+        
+        let tmp = this.head;
+        while (tmp != slow) {
+            tmp = tmp.next;
+            prev = slow;
+            slow = slow.next;
+        }
+        prev.next = null;  
+        return head;
+    }
 }
 
 list = new SinglyLinkedList();
