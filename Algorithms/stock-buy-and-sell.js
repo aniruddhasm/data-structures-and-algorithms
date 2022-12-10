@@ -1,6 +1,9 @@
-The cost of stock on each day is given in an array A[] of size N. Find all the segment of days on which you buy and sell the stock so that in between those days your profit is maximum.
+/*
+The cost of stock on each day is given in an array A[] of size N. 
+Find all the segment of days on which you buy and sell the stock so that in between those days your profit is maximum.
 
-Note: Since there can be multiple solutions, the driver code will return 1 if your answer is correct, otherwise, it will return 0. In case there
+Note: Since there can be multiple solutions, the driver code will return 1 if your answer is correct, 
+otherwise, it will return 0. In case there
 s no profit the driver code will return the string "No Profit" for a correct solution.
 
 Example 1:
@@ -33,9 +36,11 @@ give us maximum profit.
 
 
 Your Task:
-The task is to complete the function stockBuySell() which takes an array A[] and N as input parameters and finds the days of buying and selling stock. 
+The task is to complete the function stockBuySell() which takes an array A[] and N as input parameters 
+and finds the days of buying and selling stock. 
 The function must return a 2D list of integers containing all the buy-sell pairs i.e. 
-first value of pair will represent the day on which you buy the stock and second value represent the day on which you sell that stock.
+first value of pair will represent the day on which you buy the stock and second value 
+represent the day on which you sell that stock.
 If there is No Profit, return an empty list.
 
 
@@ -44,22 +49,22 @@ Expected Auxiliary Space: O(N)
 
 
 
-solution:
+*/
 
-stockBuySell(A, n){
+function stockBuySell(A, n) {
     //your code here
     let minAmount = A[0]
     let maxProfit = 0;
     let sellDay = 0;
     let abc = [];
-    for(let i=0; i<A.length;i++){
-        if(A[i]>minAmount){
+    for (let i = 0; i < A.length; i++) {
+        if (A[i] > minAmount) {
             let diff = A[i] - minAmount
             abc.push([sellDay, i])
             minAmount = A[i];
-            sellDay = i       
+            sellDay = i
         }
-        if(A[i]<minAmount){
+        if (A[i] < minAmount) {
             sellDay = i
             minAmount = A[i]
         }
@@ -68,4 +73,4 @@ stockBuySell(A, n){
 }
 
 
-console.log(stockBuySell([100,180,260,310,40,535,695])
+console.log(stockBuySell([100, 180, 260, 310, 40, 535, 695]))
