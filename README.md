@@ -9,8 +9,9 @@ This repository contains JavaScript based examples of data structures and algori
 * [Hash Table](DataStructures/HashTable.js)
 * [Heap](DataStructures/MaxBinaryHeap.js) - max heap
 * [Priority Queue](DataStructures/PriorityQueue.js)
-* [Trie]()
+* [Graph](DataStructures/Graph.js)
 * [Tree](DataStructures/BinarySearchTree.js)
+* [Trie]()
 
 
 ## Alogorithms
