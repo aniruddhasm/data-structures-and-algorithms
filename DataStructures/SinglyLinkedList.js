@@ -1,24 +1,24 @@
-class Node{
-    constructor(val){
+class Node {
+    constructor(val) {
         this.val = val;
         this.next = null;
     }
 }
 
 
-class SinglyLinkedList{
-    constructor(){
+class SinglyLinkedList {
+    constructor() {
         this.head = null;
         this.tail = null;
         this.length = 0;
     }
 
-    push(val){
+    push(val) {
         const newNode = new Node(val);
-        if(!this.head){
+        if (!this.head) {
             this.head = newNode;
             this.tail = this.head;
-        } else{
+        } else {
             this.tail.next = newNode;
             this.tail = newNode;
         }
@@ -29,18 +29,18 @@ class SinglyLinkedList{
     // 1 -> 2 -> 3 -> 4
     //           nt
     //                c
-    pop(){
-        if(!this.head) return undefined;
+    pop() {
+        if (!this.head) return undefined;
         let current = this.head;
         let newTail = this.head;
-        while(current.next){
+        while (current.next) {
             newTail = current;
             current = current.next;
         }
         this.tail = newTail;
         this.tail.next = null
         this.length--;
-        if(this.length === 0){
+        if (this.length === 0) {
             this.head = null;
             this.tail = null;
         }
@@ -48,20 +48,20 @@ class SinglyLinkedList{
 
     }
 
-    shift(){
-        if(!this.head) return undefined;
+    shift() {
+        if (!this.head) return undefined;
         let currentHead = this.head;
         this.head = currentHead.next;
         this.length--;
-        if(this.length === 0){
+        if (this.length === 0) {
             this.tail = null;
         }
         return currentHead;
     }
 
-    unshift(val){
+    unshift(val) {
         const newNode = new Node(val);
-        if(!this.head){
+        if (!this.head) {
             this.head = newNode;
             this.tail = newNode;
         } else {
@@ -73,20 +73,20 @@ class SinglyLinkedList{
         return this;
     }
 
-    get(index){
-        if(index < 0 || index >= this.length) return null;
+    get(index) {
+        if (index < 0 || index >= this.length) return null;
         let counter = 0;
         let current = this.head;
-        while(counter !== index){
+        while (counter !== index) {
             current = current.next;
             counter++;
         }
         return current;
     }
 
-    set(val, index){
+    set(val, index) {
         const foundNode = this.get(index);
-        if(foundNode){
+        if (foundNode) {
             foundNode.val = val;
             return true;
         }
@@ -94,15 +94,15 @@ class SinglyLinkedList{
     }
 
     // 0 -> 1 -> 2
-    
+
     // 0.5
 
-    insert(val, index){
-        if(index < 0 || index > this.length) return false;
-        if(index === 0) return !!this.unshift(val);
-        if(index === this.length) return !!this.push(val);
+    insert(val, index) {
+        if (index < 0 || index > this.length) return false;
+        if (index === 0) return !!this.unshift(val);
+        if (index === this.length) return !!this.push(val);
         const newNode = new Node(val);
-        let prevNode = this.get(index-1);
+        let prevNode = this.get(index - 1);
         let temp = prevNode.next;
         prevNode.next = newNode;
         newNode.next = temp;
@@ -110,11 +110,11 @@ class SinglyLinkedList{
         return true;
     }
 
-    remove(index){
-        if(index < 0 || index > this.length) return false;
-        if(index === 0) return !!this.shift();
-        if(index === this.length) return !!this.pop();
-        const prevNode = this.get(index-1);
+    remove(index) {
+        if (index < 0 || index > this.length) return false;
+        if (index === 0) return !!this.shift();
+        if (index === this.length) return !!this.pop();
+        const prevNode = this.get(index - 1);
         let removed = prevNode.next;
         prevNode.next = removed.next;
         this.length--;
@@ -122,14 +122,14 @@ class SinglyLinkedList{
 
     }
 
-    reverse(){
+    reverse() {
         let node = this.head;
         this.head = this.tail;
         this.tail = node;
         let next;
         let prev = null;
-        let i=0;
-        while(i < this.length){
+        let i = 0;
+        while (i < this.length) {
             next = node.next;
             node.next = prev;
             prev = node;
@@ -139,85 +139,81 @@ class SinglyLinkedList{
         return this;
     }
 
-    print(){
+    print() {
         const data = [];
         let current = this.head;
-        while(current){
+        while (current) {
             data.push(current.val)
             current = current.next;
         }
         return data;
     }
 
-    middleElement(){
+    middleElement() {
         let i = this.head;
-        let j = this.head; 
-        while(j !== null && j.next !== null){
+        let j = this.head;
+        while (j !== null && j.next !== null) {
             i = i.next;
             j = j.next.next;
         }
         return i.val;
     }
 
-    detectCycle(){
-        let i=this.head;
-        let j=this.head;
-        while(j !== null && j.next !== null){
+    detectCycle() {
+        let i = this.head;
+        let j = this.head;
+        while (j !== null && j.next !== null) {
             i = i.next;
             j = j.next.next;
-            if(i === j){
-                return i;
+            if (i === j) {
+                return true;
             }
         }
         return false;
     }
 
-    detectCycleNode(){
-        let meet = this.detectCycle();
+    getDetectedCycleValue() {
+        let i = this.head;
+        let j = this.head;
+        while (j !== null && j.next !== null) {
+            i = i.next;
+            j = j.next.next;
+            if (i === j) {
+                return i;
+            }
+        }
+        return null;
+    }
+
+    detectCycleNode() {
+        let meet = this.getDetectedCycleValue();
+        if (meet === null) return 0;
         let current = this.head;
-        while(current.val !== meet.val){
+        while (current.val !== meet.val) {
             current = current.next;
             meet = meet.next;
         }
         return current;
     }
 
-    // remove duplictes from sorted Linked List
-    removeDuplicates(){
-        let current = this.head;
-        while(current.next){
-            if(current.data === current.next.data){
-                current.next = current.next.next;
-            } else {
-                current=current.next;
-            }
-        }
-        return this.head;
-    }
-
-    //Nth node from end of linked list
-    getNthFromLast(n){
-        let i = 1;
-        let current = this.head;
-        while(current.next){
+    //Find length of Loop
+    countNodesinLoop() {
+        let meet = this.getDetectedCycleValue()
+        if (meet === null) return 0;
+        let current = meet;
+        let count = 1;
+        while (current.next != meet) {
+            count++;
             current = current.next;
-            i++;
         }
-        if(i < n) {
-            return -1;
-        } else {
-           let el = this.get(head, i-n)
-           return el.data;
-        }
+        return count;
     }
 
-    //Remove duplicates from an unsorted linked list
-    removeDuplicates(){
+    // remove duplictes from sorted Linked List
+    removeDuplicates() {
         let current = this.head;
-        let hashMap = {}
-        while(current.next){
-            hashMap[current.data] = 1;
-            if(current.next && hashMap[current.next.data]){
+        while (current.next) {
+            if (current.data === current.next.data) {
                 current.next = current.next.next;
             } else {
                 current = current.next;
@@ -226,63 +222,81 @@ class SinglyLinkedList{
         return this.head;
     }
 
-    //Find length of Loop
-    countNodesinLoop(){
-       let meet = this.detectCycle(this.head)
-       if(meet === null) return 0;
-       let current = meet;
-       let count = 1;
-       while(current.next != meet){
-           count++;
-           current = current.next;
-       }
-       return count;
-    }
-
-    //Delete Middle of Linked List
-    deleteMiddle(node){
+    //Nth node from end of linked list
+    getNthFromLast(n) {
         let i = 1;
         let current = this.head;
-        while(current.next){
+        while (current.next) {
             current = current.next;
             i++;
         }
-        
-        let mid = Math.floor(i/2);
-        if(i%2 !== 0 ){
-            mid + 1          
+        if (i < n) {
+            return -1;
+        } else {
+            let el = this.get(head, i - n)
+            return el.data;
         }
-        let prevNode = this.get(mid-1, this.head);
+    }
+
+    //Remove duplicates from an unsorted linked list
+    removeDuplicates() {
+        let current = this.head;
+        let hashMap = {}
+        while (current.next) {
+            hashMap[current.data] = 1;
+            if (current.next && hashMap[current.next.data]) {
+                current.next = current.next.next;
+            } else {
+                current = current.next;
+            }
+        }
+        return this.head;
+    }
+
+    //Delete Middle of Linked List
+    deleteMiddle(node) {
+        let i = 1;
+        let current = this.head;
+        while (current.next) {
+            current = current.next;
+            i++;
+        }
+
+        let mid = Math.floor(i / 2);
+        if (i % 2 !== 0) {
+            mid + 1
+        }
+        let prevNode = this.get(mid - 1, this.head);
         let removed = prevNode.next;
         prevNode.next = removed.next;
         return node;
     }
 
     //Remove loop
-    removeLoop(){
+    removeLoop() {
         let slow = this.head;
         let fast = this.head;
         let prev;
-        while(fast != null && fast.next != null){
+        while (fast != null && fast.next != null) {
             prev = slow;
             slow = slow.next;
             fast = fast.next.next;
-            if(slow == fast){
+            if (slow == fast) {
                 break;
             }
         }
-        
-        if(fast == null || fast.next == null) {
+
+        if (fast == null || fast.next == null) {
             return;
         }
-        
+
         let tmp = this.head;
         while (tmp != slow) {
             tmp = tmp.next;
             prev = slow;
             slow = slow.next;
         }
-        prev.next = null;  
+        prev.next = null;
         return head;
     }
 }
