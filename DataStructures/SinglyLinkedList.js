@@ -299,6 +299,21 @@ class SinglyLinkedList {
         prev.next = null;
         return head;
     }
+
+    // Pair wise swap
+    // Input = [1, 2, 3, 4]
+    // Output = [2, 1, 4, 3]
+    pairWiseSwap(node) {
+        let current = node;
+
+        while (current != null && current.next != null) {
+            let val = current.data;
+            current.data = current.next.data;
+            current.next.data = val;
+            current = current.next.next;
+        }
+        return node;
+    }
 }
 
 list = new SinglyLinkedList();
