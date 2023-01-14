@@ -262,8 +262,8 @@ class SinglyLinkedList {
             i++;
         }
 
-        let mid = Math.floor(i / 2);
-        if (i % 2 !== 0) {
+        let mid = ~~(i / 2);
+        if (i & 1 !== 0) {
             mid + 1
         }
         let prevNode = this.get(mid - 1, this.head);
@@ -297,7 +297,7 @@ class SinglyLinkedList {
             slow = slow.next;
         }
         prev.next = null;
-        return head;
+        return this.head;
     }
 
     // Pair wise swap
